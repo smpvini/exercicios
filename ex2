@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int numeroCarrosVendidos;
+        double valorTotalVendas;
+        double salarioFixo;
+        double valorComissao;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o número de carros vendidos: ");
+        numeroCarrosVendidos = scanner.nextInt();
+
+        System.out.print("Digite o valor total das vendas: ");
+        valorTotalVendas = scanner.nextDouble();
+
+        System.out.print("Digite o salário fixo: ");
+        salarioFixo = scanner.nextDouble();
+
+        System.out.print("Digite o valor da comissão por carro vendido: ");
+        valorComissao = scanner.nextDouble();
+
+        double comissaoTotal = numeroCarrosVendidos * valorComissao;
+
+        double comissaoFinal = comissaoTotal + (valorTotalVendas * 0.05);
+
+        double salarioFinal = salarioFixo + comissaoFinal;
+
+        System.out.println("O salário final do vendedor é: R$" + salarioFinal);
+    }
+}
