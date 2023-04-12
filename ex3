@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class ex3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Enumeração dos pratos, sobremesas e bebidas
+        enum Prato {
+            VEGETARIANO(180),
+            PEIXE(230),
+            FRANGO(250),
+            CARNE(350);
+
+            private final int calorias;
+
+            Prato(int calorias) {
+                this.calorias = calorias;
+            }
+
+            public int getCalorias() {
+                return calorias;
+            }
+        }
+
+        enum Sobremesa {
+            ABACAXI(75),
+            SORVETE_DIET(110),
+            MOUSSE_DIET(170),
+            MOUSSE_CHOCOLATE(200);
+
+            private final int calorias;
+
+            Sobremesa(int calorias) {
+                this.calorias = calorias;
+            }
+
+            public int getCalorias() {
+                return calorias;
+            }
+        }
+
+        enum Bebida {
+            CHA(20),
+            SUCO_LARANJA(70),
+            SUCO_MELAO(100),
+            REFRIGERANTE_DIET(65);
+
+            private final int calorias;
+
+            Bebida(int calorias) {
+                this.calorias = calorias;
+            }
+
+            public int getCalorias() {
+                return calorias;
+            }
+        }
+
+        // Obtenção dos prato, sobremesa e bebida selecionados pelo usuário
+        System.out.println("Selecione um prato: ");
+        for (Prato prato : Prato.values()) {
+            System.out.println(prato.ordinal() + 1 + " - " + prato.name().toLowerCase());
+        }
+        int pratoSelecionado = scanner.nextInt();
+
+        System.out.println("Selecione uma sobremesa: ");
+        for (Sobremesa sobremesa : Sobremesa.values()) {
+            System.out.println(sobremesa.ordinal() + 1 + " - " + sobremesa.name().toLowerCase().replace("_", " "));
+        }
+        int sobremesaSelecionada = scanner.nextInt();
+
+        System.out.println("Selecione uma bebida: ");
+        for (Bebida bebida : Bebida.values()) {
+            System.out.println(bebida.ordinal() + 1 + " - " + bebida.name().toLowerCase().replace("_", " "));
+        }
+        int bebidaSelecionada = scanner.nextInt();
+
+        // Cálculo das calorias totais da refeição
+        int caloriasTotais = Prato.values()[pratoSelecionado - 1].getCalorias() +
+                Sobremesa.values()[sobremesaSelecionada - 1].getCalorias() +
+                Bebida.values()[bebidaSelecionada - 1].getCalorias();
+
+        // Impressão do resultado
+        System.out.println("A quantidade total de calorias da sua refeição é: " + caloriasTotais + " calorias.");
+
+        scanner.close();
+    }
+}
