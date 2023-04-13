@@ -1,0 +1,85 @@
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class ex1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Cadastro de pessoa
+        String nome = JOptionPane.showInputDialog(null, "Digite o nome da pessoa:");
+        int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a idade da pessoa:"));
+        String endereco = JOptionPane.showInputDialog(null, "Digite o endereço da pessoa:");
+        Pessoa pessoa = new Pessoa(nome, idade, endereco);
+
+        // Cadastro de pet
+        nome = JOptionPane.showInputDialog(null, "Digite o nome do pet:");
+        String especie = JOptionPane.showInputDialog(null, "Digite a espécie do pet:");
+        String idadePet = JOptionPane.showInputDialog(null, "Digite a idade do pet:");
+        Pet pet = new Pet(nome, especie, idadePet);
+
+        // Cadastro de veículo
+        String modelo = JOptionPane.showInputDialog(null, "Digite o modelo do veículo:");
+        String placa = JOptionPane.showInputDialog(null, "Digite a placa do veículo:");
+        int ano = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o ano do veículo:"));
+        Veiculo veiculo = new Veiculo(modelo, placa, ano);
+
+        // Exibindo os dados cadastrados
+        System.out.println("Dados da pessoa:");
+        System.out.println(pessoa);
+        System.out.println("Dados do pet:");
+        System.out.println(pet);
+        System.out.println("Dados do veículo:");
+        System.out.println(veiculo);
+    }
+}
+
+class Pessoa {
+    private String nome;
+    private int idade;
+    private String endereco;
+
+    public Pessoa(String nome, int idade, String endereco) {
+        this.nome = nome;
+        this.idade = idade;
+        this.endereco = endereco;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + "\nIdade: " + idade + "\nEndereço: " + endereco;
+    }
+}
+
+class Pet {
+    private String nome;
+    private String especie;
+    private String idade;
+
+    public Pet(String nome, String especie, String idade) {
+        this.nome = nome;
+        this.especie = especie;
+        this.idade = idade;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome do pet: " + nome + "\nEspécie: " + especie + "\nIdade: " + idade;
+    }
+}
+
+class Veiculo {
+    private String modelo;
+    private String placa;
+    private int ano;
+
+    public Veiculo(String modelo, String placa, int ano) {
+        this.modelo = modelo;
+        this.placa = placa;
+        this.ano = ano;
+    }
+
+    @Override
+    public String toString() {
+        return "Modelo: " + modelo + "\nPlaca: " + placa + "\nAno: " + ano;
+    }
+}
