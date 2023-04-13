@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class ex4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int countMulheres18a35CastanhoCastanho = 0;
+        int countTotalMulheres = 0;
+
+        while (true) {
+            // Coleta dos dados do habitante
+            System.out.print("Sexo (m ou f): ");
+            String sexo = scanner.nextLine();
+            if (!sexo.equals("m") && !sexo.equals("f")) {
+                System.out.println("Opção inválida, tente novamente.");
+                continue;
+            }
+
+            System.out.print("Cor dos olhos (a, v, c ou p): ");
+            String corOlhos = scanner.nextLine();
+            if (!corOlhos.equals("a") && !corOlhos.equals("v") &&
+                    !corOlhos.equals("c") && !corOlhos.equals("p")) {
+                System.out.println("Opção inválida, tente novamente.");
+                continue;
+            }
+
+            System.out.print("Cor dos cabelos (l, c, p ou r): ");
+            String corCabelos = scanner.nextLine();
+            if (!corCabelos.equals("l") && !corCabelos.equals("c") &&
+                    !corCabelos.equals("p") && !corCabelos.equals("r")) {
+                System.out.println("Opção inválida, tente novamente.");
+                continue;
+            }
+
+            System.out.print("Idade (entre 10 e 100 anos): ");
+            int idade = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+            if (idade == -1) {
+                break;
+            } else if (idade < 10 || idade > 100) {
+                System.out.println("Idade inválida, tente novamente.");
+                continue;
+            }
+
+            System.out.print("Salário: ");
+            double salario = scanner.nextDouble();
+            scanner.nextLine(); // Consumir a quebra de linha
+            if (salario < 0) {
+                System.out.println("Salário inválido, tente novamente.");
+                continue;
+            }
+
+            // Verificação da condição para contabilizar mulheres de 18 a 35 anos
+            if (sexo.equals("f") && idade >= 18 && idade <= 35 &&
+                    corOlhos.equals("c") && corCabelos.equals("c")) {
+                countMulheres18a35CastanhoCastanho++;
+            }
+
+            // Contabilização de mulheres
+            if (sexo.equals("f")) {
+                countTotalMulheres++;
+            }
+        }
+
+        // Cálculo da porcentagem de mulheres de 18 a 35 anos com olhos e cabelos castanhos
+        double porcentagem = (double) countMulheres18a35CastanhoCastanho / countTotalMulheres * 100;
+
+        // Saída do resultado
+        System.out.printf("A porcentagem de mulheres de 18 a 35 anos com olhos e cabelos castanhos é de %.2f%%", porcentagem);
+    }
+}
